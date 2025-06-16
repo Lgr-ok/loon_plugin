@@ -1,0 +1,35 @@
+#!name = 车来了_去广告
+#!desc = 屏蔽车来了应用内广告内容
+#!author =
+#!icon =
+#!date = 2025-06-16
+
+[General]
+force-http-engine-hosts =
+
+[Rule]
+
+图片广告资源屏蔽
+
+URL-REGEX, ^https?://pic1.chelaile.net.cn/adv/, REJECT-DICT
+
+广告数据接口屏蔽
+
+URL-REGEX, ^https?://(api|atrace).chelaile.net.cn/adpub/, REJECT-DICT
+URL-REGEX, ^https?://api.chelaile.net.cn/goocity/advert/, REJECT-DICT
+
+广告图片资源屏蔽
+
+URL-REGEX, ^https?://atrace.chelaile.net.cn/adpub/, REJECT-IMG
+URL-REGEX, ^https?://atrace.chelaile.net.cn/exhibit?&adv_image, REJECT-IMG
+
+网页广告接口屏蔽
+
+URL-REGEX, ^https?://web.chelaile.net.cn/api/adpub/ad, REJECT-DICT
+
+CDN广告资源屏蔽
+
+URL-REGEX, ^https?://cdn.\w{3}.chelaileapp.cn/(api/)?adpub, REJECT-DICT
+
+[MITM]
+hostname = pic1.chelaile.net.cn, api.chelaile.net.cn, atrace.chelaile.net.cn, web.chelaile.net.cn, cdn.*.chelaileapp.cn
